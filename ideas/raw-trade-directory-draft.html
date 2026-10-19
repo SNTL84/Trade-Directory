@@ -1,0 +1,255 @@
+<!doctype html>
+<!-- Raw idea snapshot uploaded from the user-provided HTML on 2026-10-19.
+Kept as a source reference, not the production React entry point.
+The supplied sample company contact data and verification claims should be reviewed before being used publicly. -->
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Trade Directory</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a register of listings. Header, one toolbar (search, filters, sort), then a responsive card grid that goes from 1 to 2 columns. */
+:root{
+  --font-display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --font-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --bg:#f1f4f6; --surface:#ffffff; --ink:#14202b; --muted:#566878; --line:#d8e0e6;
+  --accent:#0d5c75; --accent-ink:#ffffff; --accent-soft:#e0eff3;
+  --good:#1b6a3d; --good-bg:#e2f3e9; --warn:#85560a; --warn-bg:#faeed3;
+  --focus:#0d5c75;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e151b; --surface:#16202a; --ink:#e5ecf1; --muted:#93a4b2; --line:#283643;
+  --accent:#5cc0d9; --accent-ink:#06222b; --accent-soft:#12303c;
+  --good:#6fd19a; --good-bg:#15301f; --warn:#e8b45a; --warn-bg:#392c10; --focus:#5cc0d9; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e151b; --surface:#16202a; --ink:#e5ecf1; --muted:#93a4b2; --line:#283643;
+  --accent:#5cc0d9; --accent-ink:#06222b; --accent-soft:#12303c;
+  --good:#6fd19a; --good-bg:#15301f; --warn:#e8b45a; --warn-bg:#392c10; --focus:#5cc0d9; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--font-body);
+  padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+header{display:flex;flex-direction:column;gap:6px}
+h1{font:700 clamp(1.7rem,4.5vw,2.4rem)/1.1 var(--font-display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.sub{margin:0;color:var(--muted);max-width:60ch}
+.meta{font:400 12px/1.4 var(--font-mono);color:var(--muted);letter-spacing:.02em}
+.toolbar{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:14px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,170px) minmax(0,170px);gap:12px}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label,.chips-label{font:500 11px/1 var(--font-body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+input[type=search],select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-height:44px}
+input[type=search]::placeholder{color:var(--muted)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 13px/1 var(--font-body);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 12px;min-height:36px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.chip .n{font:400 11px var(--font-mono);color:var(--muted)}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.chip[aria-pressed="true"] .n{color:inherit;opacity:.85}
+.chip[disabled]{opacity:.45;cursor:default}
+.status{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;min-height:28px}
+.count{font:500 13px var(--font-mono);color:var(--muted)}
+.clear{font:500 13px var(--font-body);background:none;border:0;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:6px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:14px;align-items:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.top>div{min-width:0}
+.id{font:400 11px var(--font-mono);color:var(--muted);letter-spacing:.04em}
+h2{font:700 1.15rem/1.25 var(--font-display);margin:2px 0 0;overflow-wrap:anywhere}
+.tag{display:inline-block;margin-top:8px;font:500 12px/1 var(--font-body);color:var(--accent);background:var(--accent-soft);border-radius:4px;padding:5px 8px}
+.conf{flex:none;font:500 11px/1 var(--font-mono);border-radius:4px;padding:5px 7px;letter-spacing:.03em}
+.conf.High{color:var(--good);background:var(--good-bg)}
+.conf.Medium,.conf.Low{color:var(--warn);background:var(--warn-bg)}
+dl{margin:0;display:grid;grid-template-columns:84px minmax(0,1fr);gap:8px 12px}
+dt{font:500 11px/1.7 var(--font-body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+dd{margin:0;min-width:0;overflow-wrap:anywhere;display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.mono{font-family:var(--font-mono);font-size:13px}
+.na{color:var(--muted);font-style:italic}
+.copy{font:500 11px/1 var(--font-body);color:var(--accent);background:transparent;border:1px solid var(--line);border-radius:5px;padding:5px 8px;cursor:pointer}
+.copy:hover{border-color:var(--accent)}
+a{color:var(--accent);text-underline-offset:3px}
+.svc{margin:0;color:var(--ink)}
+details{border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font:500 13px var(--font-body);color:var(--muted);min-height:28px;display:flex;align-items:center}
+summary:hover{color:var(--ink)}
+.ver{display:flex;flex-direction:column;gap:10px;padding-top:8px;font-size:13px}
+.ver p{margin:0;color:var(--muted)}
+.ver ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.ver li{overflow-wrap:anywhere}
+mark{background:var(--warn-bg);color:inherit;border-radius:2px;padding:0 1px}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:10px;padding:32px 18px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.empty p{margin:0;color:var(--muted)}
+.btn{font:500 14px var(--font-body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:8px;padding:10px 16px;min-height:40px;cursor:pointer}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);font:500 13px var(--font-body);padding:9px 14px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s}
+.toast.on{opacity:1}
+footer{font-size:12px;color:var(--muted);max-width:70ch}
+@media (max-width:640px){
+  .row{grid-template-columns:minmax(0,1fr)}
+  .card{padding:16px}
+  dl{grid-template-columns:72px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="meta" id="meta"></span>
+    <h1>Trade Directory</h1>
+    <p class="sub">Ten established Indian companies with registered or corporate office details, checked against company pages and stock-exchange filings.</p>
+  </header>
+
+  <section class="toolbar" aria-label="Search and filters">
+    <div class="row">
+      <div class="field">
+        <label for="q">Search</label>
+        <input type="search" id="q" placeholder="Name, service, city, PIN or CIN" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="city">City</label>
+        <select id="city"></select>
+      </div>
+      <div class="field">
+        <label for="sort">Sort by</label>
+        <select id="sort">
+          <option value="name">Name A to Z</option>
+          <option value="city">City</option>
+          <option value="confidence">Verification level</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <div class="chips-label" id="chips-label">Category</div>
+      <div class="chips" id="chips" role="group" aria-labelledby="chips-label" style="margin-top:8px"></div>
+    </div>
+  </section>
+
+  <div class="status">
+    <span class="count" id="count" role="status" aria-live="polite"></span>
+    <button class="clear" id="clear" hidden>Clear filters</button>
+  </div>
+
+  <main class="grid" id="grid"></main>
+
+  <footer>Contact details change. Each listing shows its verification level and the pages it was checked against. Medium means one detail rests on a third-party page, so confirm it with the company before relying on it.</footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script type="application/json" id="data">{"dataset": "Trade Directory Sample", "record_count": 10, "verified_on": "2026-10-19", "records": [{"business_name": "Gujarat Cooperative Milk Marketing Federation Ltd (Amul)", "category": "Dairy & Food Products", "address": "PO Box 10, Amul Dairy Road", "city": "Anand", "state": "Gujarat", "pincode": "388001", "phone": "+91 2692 258506", "email": null, "website": "https://www.amul.com", "cin": null, "services": "Marketing of milk and milk products (butter, cheese, ghee, milk powders, ice cream, etc.) under the Amul and Sagar brands", "confidence": "Medium", "notes": "Address confirmed by Amul's own organisation page (PDF copy). Phone appears only on third-party aggregator Datanyze; no official email found.", "sources": ["https://business.mapsofindia.com/sectors/manufacturing/amul.html", "https://www.datanyze.com/companies/amul/352656755", "https://www.collegesidekick.com/study-docs/17108149"], "id": "TD-001", "verified_on": "2026-10-19"}, {"business_name": "Asian Paints Limited", "category": "Paints & Coatings", "address": "6A & 6B, Shantinagar, Santacruz (East)", "city": "Mumbai", "state": "Maharashtra", "pincode": "400055", "phone": "+91 22 6218 1000", "email": "investor.relations@asianpaints.com", "website": "https://www.asianpaints.com", "cin": "L24220MH1945PLC004598", "services": "Manufacture of decorative and industrial paints and related products", "confidence": "High", "notes": "Registered office and phone match company letterhead filed with BSE/NSE and MCA-derived record. Email from broker data page (secondary).", "sources": ["https://www.instafinancials.com/company/asian-paints-limited-L24220MH1945PLC004598", "https://www.jhaveritrade.com/company-profile/board-members/100820", "https://voguestock.in/fundamental/livequotes/asian-paints-ltd"], "id": "TD-002", "verified_on": "2026-10-19"}, {"business_name": "Havells India Ltd", "category": "Electrical Equipment & Consumer Durables", "address": "QRG Towers, 2D, Sector 126, Expressway (Corporate Office)", "city": "Noida", "state": "Uttar Pradesh", "pincode": "201304", "phone": "+91 120 4771000", "email": "customercare@havells.com", "website": "https://www.havells.com", "cin": "L31900DL1983PLC016304", "services": "Fans, switches, lighting, switchgear, cables, water heaters, appliances (incl. Lloyd consumer products)", "confidence": "High", "notes": "From Havells' official contact page. Registered office is separate: 904, 9th Floor, Surya Kiran Building, K.G. Marg, Connaught Place, New Delhi 110001. Customer care 08045771313.", "sources": ["https://havells.com/contact-us", "https://pitchbook.com/profiles/company/10804-24"], "id": "TD-003", "verified_on": "2026-10-19"}, {"business_name": "Dabur India Limited", "category": "FMCG / Ayurvedic & Personal Care", "address": "Dabur Corporate Office, Kaushambi, Sahibabad", "city": "Ghaziabad", "state": "Uttar Pradesh", "pincode": "201010", "phone": "+91 120 3962100", "email": "corpcomm@dabur.com", "website": "https://www.dabur.com", "cin": null, "services": "Hair care, oral care, health care, skin care, home care, foods & beverages", "confidence": "High", "notes": "From Dabur's official corporate-information page and contact page. Registered office: 8/3 Asaf Ali Road, New Delhi 110002 (Tel 011-23253488).", "sources": ["https://www.dabur.com/digital-annual-reports/corporate/corporate-information.php", "https://dabur.com/contact-information"], "id": "TD-004", "verified_on": "2026-10-19"}, {"business_name": "Bajaj Auto Limited", "category": "Automobiles (Two- & Three-Wheelers)", "address": "Mumbai-Pune Road, Akurdi", "city": "Pune", "state": "Maharashtra", "pincode": "411035", "phone": "+91 20 27472851", "email": "investor.relations@bajajauto.co.in", "website": "https://www.bajajauto.com", "cin": "L65993PN2007PLC130076", "services": "Manufacture and sale of motorcycles and commercial vehicles (domestic and export)", "confidence": "High", "notes": "Address/phone from company investor page and BSE filings. CIN shows 'PB' on the investor web page but 'PN' on multiple BSE letterheads; PN (Pune) used. Verify against MCA before production use.", "sources": ["https://www.bajajauto.com/investors/investor-services", "https://bseindia.com/xml-data/corpfiling/AttachHis/56146745-c540-4bef-8f80-129a82ace7a1.pdf"], "id": "TD-005", "verified_on": "2026-10-19"}, {"business_name": "Titan Company Limited", "category": "Lifestyle (Watches, Jewellery, Eyewear)", "address": "'INTEGRITY' #193, Veerasandra, Electronics City PO, Off Hosur Main Road (Corporate Office)", "city": "Bengaluru", "state": "Karnataka", "pincode": "560100", "phone": "+91 80 6704 7000", "email": null, "website": "https://www.titancompany.in", "cin": "L74999TZ1984PLC001456", "services": "Manufacture and retail of watches, jewellery (Tanishq), eyewear and accessories", "confidence": "High", "notes": "From Titan's official help/contact page. Registered office is separate: 3, Sipcot Industrial Complex, Hosur 635126, Tamil Nadu (+91 4344 664199). No general email published in sources.", "sources": ["https://www.titan.co.in/help-faqs.html", "https://www.titancompany.in/contact-us", "https://wealth.truedata.in/company/titan"], "id": "TD-006", "verified_on": "2026-10-19"}, {"business_name": "Tata Steel Limited", "category": "Steel & Metals", "address": "Bombay House, 24 Homi Mody Street, Fort", "city": "Mumbai", "state": "Maharashtra", "pincode": "400001", "phone": "+91 22 6665 8282", "email": "cosec@tatasteel.com", "website": "https://www.tatasteel.com", "cin": "L27100MH1907PLC000260", "services": "Manufacture of steel and steel products", "confidence": "High", "notes": "Registered office, phone, email and CIN from Tata Steel's own annual-return filing (FY2020) and stock-exchange letterhead; address confirmed in MCA-derived record.", "sources": ["https://www.Tatasteel.Com/media/12336/mgt-9.pdf", "https://www.bseindia.com/xml-data/corpfiling/AttachHis/91956802-4e62-4d9d-86e2-8f239aaab6a2.pdf", "https://www.registerkaro.in/company/tata-steel-limited-L27100MH1907PLC000260"], "id": "TD-007", "verified_on": "2026-10-19"}, {"business_name": "Sun Pharmaceutical Industries Limited", "category": "Pharmaceuticals", "address": "Sun House, Plot No. 201 B/1, Western Express Highway, Goregaon (E)", "city": "Mumbai", "state": "Maharashtra", "pincode": "400063", "phone": "+91 22 4324 4324", "email": "secretarial@sunpharma.com", "website": "https://www.sunpharma.com", "cin": "L24230GJ1993PLC019050", "services": "Specialty generics, innovative medicines and branded generics", "confidence": "High", "notes": "From company letterhead on NSE filing dated 24 July 2026. Registered office is separate: SPARC, Tandalja, Vadodara 390012, Gujarat.", "sources": ["https://nsearchives.nseindia.com/corporate/SUNSEC_24072026085009_SEintimationPRforOrganonSHapproval.pdf", "https://voguestock.in/fundamental/livequotes/sun-pharmaceutical-industries-ltd"], "id": "TD-008", "verified_on": "2026-10-19"}, {"business_name": "Godrej Consumer Products Limited", "category": "FMCG (Home & Personal Care)", "address": "Godrej One, 4th Floor, Pirojshanagar, Eastern Express Highway, Vikhroli (E)", "city": "Mumbai", "state": "Maharashtra", "pincode": "400079", "phone": "+91 22 2518 8010", "email": "investor.relations@godrejcp.com", "website": "https://www.godrejcp.com", "cin": "L24246MH2000PLC129806", "services": "Home care and personal care products", "confidence": "High", "notes": "Registered office and phone (+91-22-2518 8010/8020/8030) from company letterhead on exchange filings (latest seen Oct 2024). Email from broker data page (secondary).", "sources": ["https://nsearchives.nseindia.com/corporate/GODREJCP_07102024215250_BSENSESIGNED.pdf", "https://www.voguestock.in/fundamental/livequotes/godrej-consumer-products-ltd"], "id": "TD-009", "verified_on": "2026-10-19"}, {"business_name": "Mahindra & Mahindra Limited", "category": "Automotive & Farm Equipment", "address": "Gateway Building, Apollo Bunder", "city": "Mumbai", "state": "Maharashtra", "pincode": "400001", "phone": "+91 22 2289 5500", "email": "customercare@mahindra.com", "website": "https://www.mahindra.com", "cin": "L65990MH1945PLC004558", "services": "Passenger and commercial vehicles, tractors and farm equipment", "confidence": "Medium", "notes": "Registered office, phone and CIN from company's FY2020 annual-return annexure (older) and corroborated by market-data pages. Corporate HQ is Mahindra Towers, Worli, Mumbai 400018. Email is from a third-party grievance page; official portal is auto.mahindra.com/contact-us.", "sources": ["https://www.mahindra.com/annual-report-FY2020/109/", "https://www.mahindra.com/contact-us", "https://www.muthootsecurities.com/CorporateInfo/Company-Background/Mahindra-and-Mahindra-Ltd/500520"], "id": "TD-010", "verified_on": "2026-10-19"}]}</script>
+<script>
+function norm(s){return String(s==null?"":s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
+function haystack(r){return norm([r.business_name,r.category,r.city,r.state,r.pincode,r.address,r.services,r.cin,r.id].join(" "));}
+function matches(r,f){
+  if(f.category && r.category!==f.category) return false;
+  if(f.city && r.city!==f.city) return false;
+  var terms=norm(f.q||"").split(/\s+/).filter(Boolean);
+  if(!terms.length) return true;
+  var h=haystack(r);
+  return terms.every(function(t){return h.indexOf(t)!==-1;});
+}
+function filterRecords(rs,f){return rs.filter(function(r){return matches(r,f);});}
+var CONF={High:0,Medium:1,Low:2};
+function sortRecords(rs,by){
+  var c=rs.slice();
+  if(by==="city") c.sort(function(a,b){return a.city.localeCompare(b.city)||a.business_name.localeCompare(b.business_name);});
+  else if(by==="confidence") c.sort(function(a,b){return (CONF[a.confidence]-CONF[b.confidence])||a.business_name.localeCompare(b.business_name);});
+  else c.sort(function(a,b){return a.business_name.localeCompare(b.business_name);});
+  return c;
+}
+function countBy(rs,key){var m={};rs.forEach(function(r){m[r[key]]=(m[r[key]]||0)+1;});return m;}
+
+(function(){
+  var payload=JSON.parse(document.getElementById("data").textContent);
+  var ALL=payload.records;
+  var state={q:"",category:"",city:"",sort:"name"};
+  var $=function(id){return document.getElementById(id);};
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function hl(text){
+    var t=esc(text), terms=state.q.trim().split(/\s+/).filter(Boolean);
+    terms.forEach(function(term){
+      var re=new RegExp("("+term.replace(/[.*+?^${}()|[\]\\]/g,"\\$&").replace(/&/g,"&amp;")+")","ig");
+      t=t.replace(re,function(m){return "<mark>"+m+"</mark>";});
+    });
+    return t;
+  }
+  function fmtDate(iso){var d=new Date(iso+"T00:00:00");return d.toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});}
+  $("meta").textContent=ALL.length+" LISTINGS \u00b7 VERIFIED "+fmtDate(payload.verified_on).toUpperCase();
+
+  var cities=Object.keys(countBy(ALL,"city")).sort();
+  $("city").innerHTML='<option value="">All cities</option>'+cities.map(function(c){return '<option value="'+esc(c)+'">'+esc(c)+'</option>';}).join("");
+
+  function toast(msg){var t=$("toast");t.textContent=msg;t.classList.add("on");clearTimeout(toast.h);toast.h=setTimeout(function(){t.classList.remove("on");},1600);}
+
+  function row(label,html){return '<dt>'+label+'</dt><dd>'+html+'</dd>';}
+  function copyBtn(val,label){return '<button type="button" class="copy" data-copy="'+esc(val)+'" aria-label="Copy '+esc(label)+'">Copy</button>';}
+  function card(r){
+    var email=r.email?'<span class="mono">'+esc(r.email)+'</span>'+copyBtn(r.email,"email"):'<span class="na">Not published</span>';
+    var cin=r.cin?'<span class="mono">'+hl(r.cin)+'</span>':'<span class="na">Not available</span>';
+    var host=r.website.replace(/^https?:\/\//,"").replace(/\/$/,"");
+    var srcs=r.sources.map(function(u){var h=u.replace(/^https?:\/\//,"").split("/")[0];return '<li><a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">'+esc(h)+'</a></li>';}).join("");
+    return '<article class="card">'+
+      '<div class="top"><div><span class="id">'+esc(r.id)+'</span><h2>'+hl(r.business_name)+'</h2><span class="tag">'+hl(r.category)+'</span></div>'+
+      '<span class="conf '+esc(r.confidence)+'" title="Verification level">'+esc(r.confidence.toUpperCase())+'</span></div>'+
+      '<dl>'+
+        row("Address",'<span>'+hl(r.address)+', '+hl(r.city)+', '+esc(r.state)+' <span class="mono">'+hl(r.pincode)+'</span></span>')+
+        row("Phone",'<span class="mono">'+esc(r.phone)+'</span>'+copyBtn(r.phone,"phone number"))+
+        row("Email",email)+
+        row("Website",'<a href="'+esc(r.website)+'" target="_blank" rel="noopener noreferrer">'+esc(host)+'</a>')+
+        row("CIN",cin)+
+      '</dl>'+
+      '<p class="svc">'+hl(r.services)+'</p>'+
+      '<details><summary>Verification and sources ('+r.sources.length+')</summary><div class="ver"><p>'+esc(r.notes)+'</p><ul>'+srcs+'</ul></div></details>'+
+    '</article>';
+  }
+
+  function renderChips(){
+    var base=filterRecords(ALL,{q:state.q,city:state.city});
+    var counts=countBy(base,"category");
+    var cats=Object.keys(countBy(ALL,"category")).sort();
+    var html='<button type="button" class="chip" data-cat="" aria-pressed="'+(state.category===""?"true":"false")+'">All <span class="n">'+base.length+'</span></button>';
+    cats.forEach(function(c){
+      var n=counts[c]||0;
+      html+='<button type="button" class="chip" data-cat="'+esc(c)+'" aria-pressed="'+(state.category===c?"true":"false")+'"'+(n===0&&state.category!==c?' disabled':'')+'>'+esc(c)+' <span class="n">'+n+'</span></button>';
+    });
+    $("chips").innerHTML=html;
+  }
+
+  function render(){
+    var res=sortRecords(filterRecords(ALL,state),state.sort);
+    renderChips();
+    var active=state.q||state.category||state.city;
+    $("clear").hidden=!active;
+    $("count").textContent=res.length===ALL.length?"Showing all "+ALL.length+" listings":"Showing "+res.length+" of "+ALL.length+" listings";
+    $("grid").innerHTML=res.length?res.map(card).join(""):
+      '<div class="empty" style="grid-column:1/-1"><strong>No listings match</strong><p>Try fewer words, a different city, or another category.</p><button class="btn" type="button" id="reset2">Show all listings</button></div>';
+  }
+
+  function reset(){state.q="";state.category="";state.city="";$("q").value="";$("city").value="";render();}
+
+  $("q").addEventListener("input",function(e){state.q=e.target.value;render();});
+  $("city").addEventListener("change",function(e){state.city=e.target.value;render();});
+  $("sort").addEventListener("change",function(e){state.sort=e.target.value;render();});
+  $("clear").addEventListener("click",reset);
+  $("chips").addEventListener("click",function(e){
+    var b=e.target.closest(".chip");if(!b||b.disabled)return;
+    state.category=b.getAttribute("data-cat");render();
+    var again=document.querySelector('.chip[data-cat="'+(state.category.replace(/"/g,'\\"'))+'"]');if(again)again.focus();
+  });
+  $("grid").addEventListener("click",function(e){
+    if(e.target.id==="reset2"){reset();return;}
+    var b=e.target.closest(".copy");if(!b)return;
+    var val=b.getAttribute("data-copy");
+    function fallback(){
+      var el=b.previousElementSibling;
+      if(el){var rg=document.createRange();rg.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(rg);}
+      toast("Selected. Press copy on your device.");
+    }
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(val).then(function(){toast("Copied");},fallback);}
+      else fallback();
+    }catch(err){fallback();}
+  });
+  render();
+})();
+</script>
+
+</body></html>
