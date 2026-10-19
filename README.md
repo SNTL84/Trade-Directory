@@ -31,6 +31,28 @@ The repository preserves the original user-provided HTML research prototype at [
 
 **Data caution:** The uploaded draft contains ten named Indian companies, contact details, sources, and verification descriptions. Those data points have not been independently re-verified as part of this upload. Treat the records as research examples, confirm every detail with primary sources, and obtain appropriate permission before publishing or using the data commercially. Do not claim a company is verified solely because the raw draft labels it High or Medium.
 
+## Visual previews: frontend, backend and architecture
+
+These repository images make the intended product easier to review. **They are illustrative UI mockups and an architecture roadmap, not screenshots of a deployed product.** The frontend preview represents the current React prototype's direction. The backend/admin dashboard is a proposed future screen; a production backend has not been implemented yet.
+
+### Frontend — directory experience
+
+![SNTL 84 Trade Directory frontend visual preview](docs/images/frontend-preview.svg)
+
+The concept shows the branded navigation, the “Collab What’s Costing You Time.” call to action, directory search, category/city filters, and example listing cards. The current app uses placeholder data, which is labelled as demo data.
+
+### Backend — proposed admin dashboard
+
+![Proposed Trade Directory backend dashboard concept](docs/images/backend-dashboard-concept.svg)
+
+This is a planning visual for a future admin area: review queue, listing statuses, verification workflow and enquiry overview. These dashboard metrics and example records are illustrative only. They do not represent live data or existing backend functionality.
+
+### Architecture — current prototype and future stages
+
+![Trade Directory architecture roadmap](docs/images/architecture-roadmap.svg)
+
+The architecture distinguishes the current React + Vite front end and static demo listings from proposed later stages: database, role-based access, moderation, verification, enquiry capture and analytics. Supabase is a candidate for the future data layer, not a connected production service at this stage.
+
 ## Current build status
 
 The maintained application is a React + Vite prototype under `src/`. It is an early front-end demo with six illustrative placeholder listings, keyword search, city/category filters, a responsive directory UI, and WhatsApp enquiry links. The raw HTML and the React starter serve different purposes: the raw HTML documents the early idea; the React app is the code path for continued product development.
