@@ -1,254 +1,318 @@
-# SNTL 84 Trade Directory
+<div align="center">
 
-> **Collab What’s Costing You Time.**
+# 🌐 SNTL 84 · Trade Directory
 
-**SNTL 84 | Agentic AI Workflow Professional**
+### Discover businesses. Build connections. Create opportunity.
 
-Performance Marketing Service, Fulfillment Automation, Bench Resource Availability, Full-Stack Builds, AI Workflows, and Supply Chain Business Intelligence.
+**A community-built directory concept for India's trade ecosystem — connecting buyers, suppliers, manufacturers, distributors, stockists, and service providers.**
 
-🚀 **Follow for practical AI automation insights & founder systems.**
+[Explore the Code](https://github.com/SNTL84/Trade-Directory) · [Read the Roadmap](#-roadmap) · [Contribute](#-join-the-build) · [Connect with SNTL 84](https://desidevloper.com)
 
-- 🌐 Website: https://desidevloper.com
-- 💬 WhatsApp: https://wa.me/919727413309
-- 🔗 LinkedIn: https://linkedin.com/in/sntl2784
-- 💻 GitHub: https://github.com/SNTL84
-- 📸 Instagram: https://www.instagram.com/desibiztrade
+<br />
+
+**Collab What’s Costing You Time.**
+
+*Vibe Coder · AI Workflow Developer · Independent Software Validator*
+
+</div>
 
 ---
 
-## Raw draft idea
+## 👋 Builders, you're welcome here
 
-The starting concept is a searchable trade directory for business discovery across Indian cities and categories. It aims to connect manufacturers, distributors, stockists, suppliers, buyers, and service providers, with room to expand into enquiry workflows and business intelligence.
+Trade discovery is often scattered across directories, spreadsheets, social networks, and personal contacts. This project explores a cleaner way to find relevant businesses, understand what they offer, and start a useful conversation.
 
-The repository preserves the original user-provided HTML research prototype at [ideas/raw-trade-directory-draft.html](ideas/raw-trade-directory-draft.html) and a branded draft at [ideas/trade-directory-raw-draft-branded.html](ideas/trade-directory-raw-draft-branded.html). These are idea/reference files, not the React app's production entry point. The branded raw draft has the SNTL 84 masthead, the exact “Collab What’s Costing You Time.” CTA, and website/WhatsApp/LinkedIn/GitHub/Instagram links.
+We're building in public and inviting developers, designers, testers, trade professionals, and curious learners to help shape the product. You do not need to be an expert or a full-time developer to make a meaningful contribution. Small, clear, reviewed improvements count.
 
-### What the raw HTML explores
-- Search by business name, service, city, PIN code, and CIN.
-- Filter by city and category; sort by name, city, and verification level.
-- Business cards showing address, phone, email, website, company identification number when available, and services.
-- Copy buttons for contact fields and expandable source/verification notes.
-- Visible confidence/verification levels rather than silently presenting all records as equally certain.
+> **Our principle:** Build useful things, document what we learn, and make it easier for the next person to contribute.
 
-**Data caution:** The uploaded draft contains ten named Indian companies, contact details, sources, and verification descriptions. Those data points have not been independently re-verified as part of this upload. Treat the records as research examples, confirm every detail with primary sources, and obtain appropriate permission before publishing or using the data commercially. Do not claim a company is verified solely because the raw draft labels it High or Medium.
+<div align="center">
 
-## Visual previews: frontend, backend and architecture
+| 🧭 Discover | 🧰 Build | 🤝 Collaborate |
+|:---:|:---:|:---:|
+| Explore a searchable trade directory concept | Work with a React + Vite starter | Pick a task, open an issue, and submit a PR |
 
-These repository images make the intended product easier to review. **They are illustrative UI mockups and an architecture roadmap, not screenshots of a deployed product.** The frontend preview represents the current React prototype's direction. The backend/admin dashboard is a proposed future screen; a production backend has not been implemented yet.
+</div>
 
-### Frontend — directory experience
+## ✨ What we're working toward
 
-![SNTL 84 Trade Directory frontend visual preview](docs/images/frontend-preview.svg)
+- **Business discovery** — find companies by name, category, city, and services.
+- **Useful listing details** — organize business descriptions and public contact information responsibly.
+- **Trust and transparency** — keep data sources, confirmation dates, and verification status visible when real records are introduced.
+- **Business enquiries** — make it easier for interested people to contact a listing.
+- **A contributor-friendly codebase** — keep the project understandable, testable, and independent of any AI website-builder credits.
 
-The concept shows the branded navigation, the “Collab What’s Costing You Time.” call to action, directory search, category/city filters, and example listing cards. The current app uses placeholder data, which is labelled as demo data.
+**Important:** This is an early-stage prototype, not a finished or production-ready directory. Current listings are illustrative demo data. Database integration, sign-in, admin moderation, genuine verification, production enquiry tracking, payments, and analytics are future work.
 
-### Backend — proposed admin dashboard
+## 🖼️ Product direction
 
-![Proposed Trade Directory backend dashboard concept](docs/images/backend-dashboard-concept.svg)
+These visuals are **illustrative mockups and planning diagrams**, not screenshots of a live deployment.
 
-This is a planning visual for a future admin area: review queue, listing statuses, verification workflow and enquiry overview. These dashboard metrics and example records are illustrative only. They do not represent live data or existing backend functionality.
+<details open>
+<summary><strong>Frontend concept — directory discovery</strong></summary>
+<br />
 
-### Architecture — current prototype and future stages
+![Illustrative Trade Directory frontend preview](docs/images/frontend-preview.svg)
+
+The intended experience includes a branded landing page, keyword search, city/category filters, and business listing cards. See the current implementation in `src/`.
+</details>
+
+<details>
+<summary><strong>Admin dashboard concept — proposed future capability</strong></summary>
+<br />
+
+![Illustrative proposed admin dashboard](docs/images/backend-dashboard-concept.svg)
+
+This concept explores a future listing review and moderation workflow. The dashboard is **not implemented** and the figures shown are illustrative.
+</details>
+
+<details>
+<summary><strong>Architecture and delivery stages</strong></summary>
+<br />
 
 ![Trade Directory architecture roadmap](docs/images/architecture-roadmap.svg)
 
-The architecture distinguishes the current React + Vite front end and static demo listings from proposed later stages: database, role-based access, moderation, verification, enquiry capture and analytics. Supabase is a candidate for the future data layer, not a connected production service at this stage.
+The roadmap separates today's React prototype from future data, authentication, moderation, verification, enquiry, and analytics work.
+</details>
 
-## Current build status
+## 🚦 Current project status
 
-The maintained application is a React + Vite prototype under `src/`. It is an early front-end demo with six illustrative placeholder listings, keyword search, city/category filters, a responsive directory UI, and WhatsApp enquiry links. The raw HTML and the React starter serve different purposes: the raw HTML documents the early idea; the React app is the code path for continued product development.
+| Area | Status |
+|---|---|
+| React + Vite front-end prototype | 🟡 In progress |
+| Search and city/category filters | 🟡 Prototype functionality |
+| Illustrative listing data | ✅ Included |
+| Responsive UI and brand/contact links | ✅ Included in starter |
+| Production database and API | ⏳ Planned |
+| Authentication and listing-owner accounts | ⏳ Planned |
+| Admin review and moderation | ⏳ Planned |
+| Genuine business verification | ⏳ Planned |
+| Production enquiry tracking and analytics | ⏳ Planned |
+| Automated test suite / verified build | ⏳ Needs setup and validation |
 
-- **Stage 1:** Searchable prototype — current.
-- **Stage 2:** Real database and admin-managed directory records.
-- **Stage 3:** Business submission, authentication, moderation, and trust/verification flow.
-- **Stage 4:** Enquiry capture, analytics, and validation of possible monetization.
+Status describes the current repository plan; it is not a claim that the app has been deployed or that tests have passed. Please run the checks below before relying on the build.
 
-No production database, sign-in, company claims, moderation console, payment flow, or production enquiry tracking is connected yet.
+## 🧱 Tech stack
 
-## What the React starter includes
+- **React 18** — user interface
+- **Vite 6** — development server and build tooling
+- **Plain CSS** — styling
+- **JavaScript** — application logic
+- **Static demo records** — `src/data/listings.js`
+- **Optional Supabase client scaffold** — `src/lib/supabase.js`; not connected to a production backend
+- **GitHub** — source of truth and collaboration
 
-- Responsive directory landing page.
-- Keyword search across business name, category, city, description, and services.
-- Category and city filtering.
-- Directory cards and clear no-results state.
-- WhatsApp links with pre-filled enquiry text.
-- Four-stage roadmap and SNTL 84 brand/contact links.
-- Optional Supabase client scaffold for future development.
-- Local-first workflow; no dependency on Hostinger AI Builder or AI credits.
+The starter is designed for a local development workflow. It does not require Hostinger AI Builder or its credit system.
 
-## Tech stack
+## ⚡ Get running locally
 
-- React 18
-- Vite 6
-- Plain CSS
-- Static demo records in `src/data/listings.js`
-- Optional Supabase client scaffold in `src/lib/supabase.js`
-- GitHub as the source of truth
-- Hostinger as a possible static hosting destination after building `dist/`
+### Prerequisites
 
-## Quick start
+Install a current Node.js LTS release and npm. Git is recommended.
 
-### Requirements
-- Node.js LTS
-- npm
-- Git (recommended)
+### 1. Clone the repository
 
-### Install and run locally
+```bash
+git clone https://github.com/SNTL84/Trade-Directory.git
+cd Trade-Directory
+```
+
+### 2. Install dependencies
+
 ```bash
 npm install
+```
+
+### 3. Start the development server
+
+```bash
 npm run dev
 ```
 
-Vite prints a local development URL, typically `http://localhost:5173`.
+Open the local URL printed by Vite, usually `http://localhost:5173`.
 
-### Quality checks
+### 4. Run project checks
+
 ```bash
 npm run lint
 npm run build
 npm run preview
 ```
 
-The app has not been represented as build-tested by this update. Run these commands in a local Node.js environment after dependencies are installed, and fix any surfaced issues before deployment.
+Review the command output. Do not report a check as passing unless you ran it successfully. Build and deployment readiness still need to be confirmed in a local Node.js environment.
 
-## Project map
+## 🗺️ Roadmap
 
-```text
-Trade-Directory/
-├── ideas/
-│   ├── raw-trade-directory-draft.html
-│   └── trade-directory-raw-draft-branded.html
-├── src/
-│   ├── App.jsx
-│   ├── main.jsx
-│   ├── styles.css
-│   ├── data/
-│   │   └── listings.js
-│   └── lib/
-│       └── supabase.js
-├── .env.example
-├── .gitignore
-├── CHANGELOG.md
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── eslint.config.js
-├── index.html
-├── package.json
-└── vite.config.js
-```
+### Stage 1 — Make the prototype useful *(current focus)*
+- [x] Establish React + Vite starter
+- [x] Add illustrative business records and directory UI
+- [x] Add keyword search and city/category filtering
+- [x] Preserve the original concept drafts under `ideas/`
+- [x] Add contributor, security, and project documentation
+- [ ] Run lint/build and address any failures
+- [ ] Test the discovery experience with prospective users
+- [ ] Choose an initial trade category and geographic launch scope
 
-## Delivery roadmap
+### Stage 2 — Reliable data layer
+- [ ] Agree on a listing schema and validation rules
+- [ ] Choose and document a database strategy
+- [ ] Add migration and repeatable import/update workflows
+- [ ] Add appropriate access policies, pagination, and error states
+- [ ] Track record source, owner, status, and last-confirmed date
 
-### Stage 1 — Prototype and product discovery (current)
-- [x] React landing page and responsive directory UI
-- [x] Keyword search and category/city filters
-- [x] Clearly labelled mock listings
-- [x] Initial README, contribution and security guidance
-- [x] Raw uploaded HTML preserved under `ideas/`
-- [x] SNTL 84 brand CTA and social/contact links added to the React UI
-- [ ] Run lint/build in an installed local environment
-- [ ] Test the search journey with prospective listing owners and buyers
-- [ ] Agree on the first target vertical and geographic scope
+### Stage 3 — Onboarding and trust
+- [ ] Define business submission and editing journeys
+- [ ] Add authentication only when needed
+- [ ] Build a moderation/review workflow
+- [ ] Document what “verified” means and how status is earned
+- [ ] Add correction/removal requests and privacy guidance
 
-**Exit criteria:** People in the target audience can find a relevant listing quickly and describe what information they need to trust it.
+### Stage 4 — Enquiries and sustainable value
+- [ ] Design secure enquiry capture and anti-spam controls
+- [ ] Measure meaningful discovery and enquiry outcomes
+- [ ] Validate repeat usage and data quality with real users
+- [ ] Evaluate revenue models only after testing user value
 
-### Stage 2 — Real data layer
-- [ ] Agree on listing schema: name, category, city, service area, services, public contact, source, owner, verification status, and timestamps.
-- [ ] Choose a managed database (Supabase is one candidate, not a requirement).
-- [ ] Add migrations, indexes, validation, pagination/server-side filtering as appropriate.
-- [ ] Define and test access policies before exposing any user-submitted data.
-- [ ] Add loading, error, empty, duplicate and stale-data states.
-- [ ] Create a repeatable data import/update process.
+Roadmap items are proposals, not promises of delivery dates. Supabase is one possible data-layer option, not a requirement.
 
-**Security:** Browser-visible `VITE_*` variables are included in the front-end bundle. Use only public client-side keys there and configure appropriate row-level access policies. Never ship a Supabase service-role key or other privileged secret to the browser.
+## 🤝 Join the build
 
-### Stage 3 — Business onboarding and trust
-- [ ] Define sign-in and listing-owner needs.
-- [ ] Build listing submission/edit requests with input validation.
-- [ ] Implement moderation statuses such as draft, submitted, approved, rejected and suspended.
-- [ ] Track original source, last confirmed date, and reviewer where applicable.
-- [ ] Make the definition of “verified” transparent.
-- [ ] Provide a correction/removal path for businesses.
-- [ ] Prepare privacy notice and data-retention expectations before collecting personal information.
+We welcome contributions across code, design, quality, documentation, and trade-domain knowledge.
 
-### Stage 4 — Enquiries, analytics and revenue experiments
-- [ ] Add enquiry capture with appropriate consent, anti-spam controls, and secure storage.
-- [ ] Track useful funnel events: search, listing view, enquiry started, and enquiry completed.
-- [ ] Evaluate listing accuracy, active supply, qualified enquiries and repeat use.
-- [ ] Validate user value before charging for premium placement, subscriptions or leads.
-- [ ] Document pricing, terms, refund policy and data handling before any payment product.
+| Contributor | Useful first tasks |
+|---|---|
+| Frontend developers | Improve keyboard access, filters, responsive layout, and empty/loading/error states |
+| Backend developers | Propose a listing schema, secure API approach, and access-control plan |
+| UI/UX designers | Review discovery flows, mobile usability, and listing hierarchy |
+| QA testers | Test search combinations, edge cases, accessibility, and browser layouts |
+| Data-minded contributors | Design safe import rules, source tracking, duplicate detection, and freshness checks |
+| Trade professionals | Help define useful categories, listing fields, and real-world enquiry needs |
+| Technical writers / learners | Improve setup instructions, screenshots after a real run, and beginner-friendly docs |
 
-## Data quality rules
+### Good first issues
 
-1. Sample records are mock data, not verified businesses.
-2. Use company information only where the source and reuse rights are appropriate.
-3. Do not imply a business has confirmed its listing unless that has actually happened.
-4. Make verification date and status visible when genuine records are introduced.
-5. Minimize personal data and provide a way to request corrections.
-6. Keep source evidence with each imported record and periodically check whether it is stale.
+Want to help but unsure where to begin? Start with one small, reviewable task:
 
-## Optional Supabase environment
+- Improve the mobile search/filter experience.
+- Add accessible labels, focus states, and keyboard support.
+- Write test cases for the listing search and filters.
+- Propose a normalized business-listing schema.
+- Improve empty-state wording and user feedback.
+- Document setup or deployment steps you have tested.
+- Review the product concept and open a focused issue with evidence.
 
-If and when Stage 2 uses Supabase, copy the example locally:
+Before starting substantial work, open an issue so the scope can be discussed and duplicate effort avoided.
+
+### Contribution workflow
+
+1. **Explore** the repository and read [CONTRIBUTING.md](CONTRIBUTING.md).
+2. **Choose or propose** a focused issue.
+3. **Fork** the repository and create a feature branch.
+4. **Make a small change** and explain the reason for it.
+5. **Run the checks** that apply and note any checks you couldn't run.
+6. **Open a pull request** with a clear summary, screenshots for UI changes, test results, and known limitations.
+
+Example:
 
 ```bash
-cp .env.example .env.local
-```
-
-Then set:
-```dotenv
-VITE_SUPABASE_URL=
-VITE_SUPABASE_ANON_KEY=
-```
-
-Keep `.env.local` untracked. The current prototype does not require a Supabase project to run.
-
-## Git workflow for Vibe Coding
-
-AI-generated or AI-assisted changes still need review. Keep commits small, check the diff, and only state that tests passed when you actually ran them.
-
-```bash
-git status
-git pull --rebase origin main
-git checkout -b feat/short-description
-# edit and review
+git checkout -b feat/improve-directory-search
+npm install
 npm run lint
 npm run build
 git diff
 git add .
-git commit -m "feat: describe the change"
-git push -u origin feat/short-description
+git commit -m "feat: improve directory search"
+git push -u origin feat/improve-directory-search
 ```
 
-Open a pull request with behaviour changes, checks actually run, and known limitations.
+Then open a pull request on GitHub. Keep PRs focused and include before/after screenshots for visual changes where possible.
 
-## Hostinger deployment (without AI Builder)
+## 🧑‍💻 Vibe coding, with review
 
-Hostinger is a hosting destination, not the application builder.
+AI tools can speed up exploration, but generated code still needs human review. To keep the project maintainable:
+
+- Understand the change before committing it.
+- Inspect the diff and avoid unrelated edits.
+- Never commit API keys, passwords, customer information, or private contact data.
+- State honestly which checks ran and what failed.
+- Prefer clear, incremental PRs over large unreviewable rewrites.
+
+## 📁 Repository guide
+
+```text
+Trade-Directory/
+├── ideas/                         # Preserved concept drafts; not app entry points
+├── docs/images/
+│   ├── frontend-preview.svg       # Illustrative frontend mockup
+│   ├── backend-dashboard-concept.svg
+│   └── architecture-roadmap.svg
+├── src/
+│   ├── App.jsx                    # Main React interface
+│   ├── main.jsx                   # App bootstrap
+│   ├── styles.css                 # UI styles
+│   ├── data/listings.js           # Demo listing data
+│   └── lib/supabase.js            # Optional client scaffold
+├── .env.example
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── CHANGELOG.md
+├── package.json
+└── vite.config.js
+```
+
+Folder contents can evolve as implementation progresses; check the current tree before relying on a path.
+
+## 🔐 Data quality and security
+
+Trust is part of the product, not a badge added at the end.
+
+1. Treat the current sample listings as **demo data**, not verified leads or endorsements.
+2. Re-check real business information against suitable primary sources before publishing.
+3. Record the source and last confirmation date for real listings.
+4. Do not claim a business approved or verified a listing unless that actually happened.
+5. Provide a way for businesses to request corrections or removal.
+6. Minimize personal data and consider privacy and reuse rights before collecting or importing records.
+7. Never expose privileged keys in browser code. Variables prefixed with `VITE_` are bundled for client-side use; keep privileged server secrets on a server and configure database access policies before connecting real data.
+
+The preserved raw HTML drafts in `ideas/` document the original concept. Their named-company examples, contact details, and verification labels have not been independently re-verified by this README update. Treat them as research material only.
+
+See [SECURITY.md](SECURITY.md) for the repository's security guidance.
+
+## 🌍 Deploying without a website-builder credit system
+
+Hostinger can be used as a static hosting destination, but it is not required for development.
 
 1. Run `npm install` and `npm run build` locally.
-2. Confirm that Vite creates the `dist/` directory.
-3. Configure the intended domain or subdomain. A separate subdomain such as `trade.desidevloper.com` can keep the prototype separate from the main site.
-4. Upload the **contents of `dist/`** to the correct web root using Hostinger File Manager or SFTP.
-5. Enable HTTPS, then test links and responsive layout.
-6. Keep source changes in GitHub and rebuild/redeploy after updates.
+2. Confirm the build creates `dist/`.
+3. Configure the target domain or subdomain.
+4. Upload the **contents of `dist/`** to the correct web root using File Manager or SFTP.
+5. Enable HTTPS and test the site on desktop and mobile.
+6. Keep source changes in GitHub and rebuild/redeploy after code updates.
 
-Do not upload the raw `src/` folder as a substitute for a build. If deploying under a path instead of the root of a domain, update Vite's `base` configuration and test asset URLs.
+Do not upload `src/` as a replacement for building the app. If hosting below a URL path rather than a domain root, configure Vite's `base` option and test asset URLs.
 
-## Known limitations
+## 📚 Project documents
 
-- The maintained React UI uses illustrative demo records.
-- Raw idea HTML contains research examples whose details require independent re-checking.
-- No production database, auth, admin moderation, listing owner claim, verified listing program, payment, or production analytics.
-- Automated tests have not yet been added.
-- Local dependency installation and build checks are still required before deployment.
-
-## Project docs
-
-- [Contribution guide](CONTRIBUTING.md)
-- [Security notes](SECURITY.md)
+- [Contributing guide](CONTRIBUTING.md)
+- [Security guidance](SECURITY.md)
 - [Changelog](CHANGELOG.md)
+- [Raw concept draft](ideas/raw-trade-directory-draft.html)
+- [Branded concept draft](ideas/trade-directory-raw-draft-branded.html)
 
----
+## 📣 Connect and collaborate
 
-*SNTL 84 | Agentic AI Workflow Professional*  
-*Collab What’s Costing You Time.*  
+**Have a feature idea, found a bug, or want to help build?** Open an issue or pull request. Tell us what you want to improve, why it matters, and how it can be tested.
+
+<div align="center">
+
+### SNTL 84
+
+**Collab What’s Costing You Time.**
+
 *Automate What’s Costing You Money.*
+
+[Website](https://desidevloper.com) · [GitHub](https://github.com/SNTL84) · [LinkedIn](https://linkedin.com/in/sntl2784) · [Instagram](https://www.instagram.com/desibiztrade) · [WhatsApp](https://wa.me/919727413309)
+
+*Vibe Coder · AI Workflow Developer · Independent Software Validator*
+
+</div>
